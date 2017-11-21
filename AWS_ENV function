@@ -1,0 +1,11 @@
+function aws_env {
+
+  KEY_ID=`python -m keyring get "$1" "KEY_ID"`
+  SECRET=`python -m keyring get "$2" "SECRET"`
+#KEY_ID=`security find-generic-password -s $1 | grep "acct" | cut -f2 -d"=" | sed -e 's/^"//'  -e 's/"$//'`
+#SECRET=`security find-generic-password -w -s $1`
+      unset AWS_PROFILE
+      export AWS_ACCESS_KEY_ID=$KEY_ID
+      export AWS_SECRET_ACCESS_KEY=$SECRET
+      export AWS_DEFAULT_REGION=us-east-1
+}
